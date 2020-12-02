@@ -1,0 +1,84 @@
+/* Image upload */
+.user-profile-container {
+  height: 18.75rem !important;
+  width: 18.75rem !important;
+  border-radius: 50%;
+  position: relative;
+}
+
+.primary-grey {
+  background: #f5f6fa !important;
+}
+.text-grey-light {
+  color: #b9c0db !important;
+}
+
+.img-preview {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* form  */
+.form_head {
+  padding: 2rem 10rem;
+  margin: 0;
+}
+
+.form_text_head {
+  text-align: center;
+  color: #55c03e;
+  margin-bottom: 3rem;
+}
+
+.form_item {
+  margin: 0.5rem 0 !important;
+  background-color: #f8f9fa;
+}
+
+.form_input {
+  padding: 0.8rem !important;
+  border-radius: 6px !important;
+  background-color: #f8f9fa !important;
+}
+
+.picker {
+  width: 100%;
+  font-size: 1.3rem !important;
+  padding: 0.8rem !important;
+  border-radius: 6px !important;
+  background-color: #f8f9fa !important;
+}
+
+.submit {
+  width: 100%;
+  border-radius: 3rem !important;
+  padding: 1rem !important;
+  font-size: 1.2rem !important;
+  text-transform: uppercase;
+  background-color: #55c03e !important;
+  color: white !important;
+}
+
+@media only screen and (max-width: 30em) {
+  .form_head {
+    padding: 1rem;
+  }
+  .form_text_head {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem;
+  }
+  .form_input,
+  .picker,
+  .submit {
+    padding: 0.3rem !important;
+  }
+}

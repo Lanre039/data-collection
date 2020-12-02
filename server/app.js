@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const { mongoDbURI } = require("./config/keys");
-
+const path = require("path");
 const app = express();
 
 app.use(bodyParser.json());
@@ -31,6 +31,12 @@ app.use(
   })
 );
 
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
@@ -56,7 +62,7 @@ const db = mongoose.connection;
 
 db.on("error", (error) => console.log(error));
 db.on("open", async () => {
-  // require()(app)
+  require("./routes/User")(app);
 
   if (process.env.NODE_ENV === "production") {
     app.use(express.static("../client/build"));

@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
-// const validator = require("validator");
-const { ProductsSchema } = require("./Products");
+const ProductsSchema = require("./Products");
 
 const UserSchema = new mongoose.Schema({
-  name: {
+  firstName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  lastName: {
     type: String,
     required: true,
     trim: true,
@@ -18,8 +22,8 @@ const UserSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  zip: {
-    type: String,
+  zipCode: {
+    type: Number,
     required: true,
     trim: true,
   },
@@ -34,11 +38,20 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  passport: {
+  profilePicture: {
     type: String,
-    required: true,
   },
   products: [ProductsSchema],
 });
+
+UserSchema.statics.doesUserExistInDatabase = async function (email) {
+  try {
+    const user = await this.findOne({ email });
+    return !!user;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
 
 module.exports = mongoose.model("User", UserSchema);

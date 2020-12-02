@@ -12,15 +12,16 @@ cloudinary.config({
 const storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: "data-collection",
-  llowedFormats: ["jpg", "png"],
+  allowedFormats: ["jpg", "png"],
   transformation: [{ width: 500, height: 500, crop: "limit" }],
   filename: (req, file, callback) => {
     const name = file.originalname;
     callback(null, name);
   },
-  size: 1000000, //1mb
+  limits: {
+    fileSize: 1000000,
+  },
 });
-
 const parser = multer({ storage });
 
 module.exports = parser;
