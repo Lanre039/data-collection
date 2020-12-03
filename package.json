@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "12.13.1",
+    "npm": "6.14.8"
+  },
   "scripts": {
-    "server": "npm start --prefix server",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "cd client && yarn start",
+    "server": "cd server && nodemon app.js",
+    "build": "cd client && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "cd server && node app.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,6 +27,10 @@
   },
   "homepage": "https://github.com/Lanre039/data-collection#readme",
   "dependencies": {
-    "concurrently": "^5.0.2"
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.2",
+    "nodemon": "^1.19.1"
   }
 }
