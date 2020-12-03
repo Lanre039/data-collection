@@ -1,0 +1,25 @@
+{
+  "name": "data-collection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lanre039/data-collection.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lanre039/data-collection/issues"
+  },
+  "homepage": "https://github.com/Lanre039/data-collection#readme",
+  "dependencies": {
+    "concurrently": "^5.0.2"
+  }
+}
